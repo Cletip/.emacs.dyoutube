@@ -1,17 +1,53 @@
-* Emacs en français
+* Emacs en français (oui c'est moyen comme titre)
+
+Liens vers la playlist youtube : TODO
+
+*But de ce repos*
+   Ce repos à pour but de ne pas à avoir à revoir la vidéo. Ces notes ne suffisent pas, car je donne les explication en vidéo, mais permettent d'aller beaucoup plus vite et de se dire "à oui il avait parlé de ça, je vais pas revoir la vidéo mais plutôt aller voir les notes". 
+
+** Contexte
+
+Je suis sous un linux, Ubuntu 20.04.3 LTS. (faire lsb_release -a)
+
+*** Prérequis : 
+
+1. Avoir les bases de linux : cd, ls, savoir insta
+2. Avoir git et (pas sûr que se soit nécessaire) un compte github pour télécharger des packages.
+
+*** Motivation :
+
+Pourquoi ceci ? Tout simplement pour deux raisons :
+1. pour des potes , donc c'est cool.
+2. et je trouve qu'il y a un manque de doc en français, car l'anglais peut être une barrière pour les débutants. J'ai hésité à le faire en anglais, mais il y bien assez d'info en anglais comme ça.
+
+*** Pourquoi emacs
+Emacs est, pour moi, le meilleur éditeur de texte pour ces raisons :
+- extrèmement modulable et personnalisable via des packages divers et varié
+- permet d'aller très très très vite
+- n'est pas qu'un simple éditeur de texte ([[https://www.orgmode.org/fr/][org-mode]], faire du code, mails, base de donnée etc)
+- éditeur programmable : possibilité d'implémenter ses propres fonctions (niveau avancé)
+- fait parti de monde de logiciel libre, gratuit et open-source, ce qui est génial.
+
+
 ** Le programme des vidéos
 
-*** Vidéo 0 : Programme, but, installation d'emacs, pourquoi je fais ça et pourquoi Emacs. 
-
-Dire que je le fais en français car l'anglais peut être une barrière pour les débutants,  et bien assez d'info en anglais comme ça. Et je le fais pour des potes donc c'est cool.
-
-
+*** (Vidéo 0) Programme, but, et installation d'emacs.
 
 Je vais utiliser Keycast (mais pas faire attention aux touches, mais plutôt aux =commandes=!)
+Convention : C-x control-x
+m-y  meta-y
+
+Pour lancer des commandes : M-x taperlenomdelacommande
 
 
 
+**** Le programme, voir les sous titres
 
+**** But
+
+Vous donnez les pistes pour aller plus vite, mais je pourrais jamais vous remplacer ;).
+
+**** Installation
 
 Pourquoi cette version ?
 Stable, et le 28.0 est en bêta, donc pas stable logiquement et ya des bugs.
@@ -21,7 +57,7 @@ Si vous voulez emacs 28 : [[https://git.savannah.gnu.org/cgit/emacs.git/tree/INS
 #+begin_src sh
   sudo add-apt-repository ppa:kelleyk/emacs
   sudo apt-get update
-  sudo apt install emacs #puis la touche tab pour compléter. prendre la dernière version (27 /27.1/ 27.2 normalement)
+  sudo apt install emacs #puis la touche tab pour compléter. prendre la dernière version (27 ou 27.1 ou 27.2 normalement. Prendre la dernière)
   # tester avec cette commande la version d'emacs:
   emacs --version
   # lancer emacs !
@@ -29,80 +65,290 @@ Si vous voulez emacs 28 : [[https://git.savannah.gnu.org/cgit/emacs.git/tree/INS
 #+end_src
 
 
-Liens utiles TODO :
-
-- internet en général, qui est très bien pour la base
-- stackoverflow, reddit très bien pour une question précise (en anglais)
-- le manuel d'org mode,  pour org mode.
-- avec xah (mode commande puis space j) pour écrire ses propre fonction (avancée)
-  - describe function/variable
-  - customize variable (juste pour savoir ce qu'il faut mettre dedans, mais faire des setq)
-
-
-
-[[https://www.youtube.com/channel/UCAiiOTio8Yu69c3XnR7nQBQ][system crafter]]
 
 *** État d'esprit :
-**** 1.a Que voit on au démarrage et que se passe t-il en dessous ?
+**** TODO 1.a Que voit on au démarrage + explication du .emacs.d ?
 
-Tool bar mode, les différents buffers ouverts, menu bar mode etc.
+Deux raccourcis essentiels : C-g (annulé) et M-x (lancer une commande).
 
-on peut faire du code partout, les modes (major et minor), les hooks. exécuter du lisp
+1. Menu-bar 
+2. tool-bar 
+3. buffer et windows
+4. mini-buffer, M-x
+
+Idée de faire du code partout, exécuter du lisp.
 
 Mais où est la configuration ?
 
     ~/.emacs or ~/.emacs.el - vielle configuration, à supprimer et vraiment pas recommandé
-    ~/.emacs.d/init.el - ma version de configuration, 
+    ~/.emacs.d/init.el - ma version de configuration, pratique pour faire des test.
     ~/.config/emacs/init.el - la meilleur version, mais pas pratique pour faire des test
 
     Emacs va regarder partout, et dès qu'il en trouve un arrête de chercher
     
 
-**** 1.b et où trouver de l'aide.
+**** 1.b Les modes (major et minor), les hooks, la base des fonctions lisp.
+
+- Major mode = mode principale d'emacs, chargé une fois.
+- Minor mode = mode qui s'additionne au major-mode, il peut bien-sûr y en avoir plusieurs
+
+#+begin_src emacs-lisp
+
+  (add-hook 'dired-mode-hook 'auto-revert-mode)
+
+  (defun test ()
+    (interactive)
+
+    ;;mettre le code ici
+
+    )
+
+  (defun Policepourcoder ()
+    (interactive)
+    (set-face-attribute 'default nil
+                        :font "JetBrains Mono"
+                        :weight 'light
+                        ;; :height 150
+                        )
+    )
+
+  (add-hook 'lsp-mode-hook 'Policepourcoder)
 
 
-*** Comment installer des packages, explication du .emacs.d (base base base d'org mode) (init.el et config .org) 
-**** Comment faire une bonne config ? Les if, when, tuto xah lisp. Utiliser la super fonction pour rapidement déboguer (attention de pas mettre de "")
-*** Base d'emacs : raccourcis, remapper ses contrôles sur ses pouces, présentation rapide de xah fly key (car c'est celui que j'utilise),
+#+end_src
 
-- plusieurs raccourcis possibles :
+
+*** L'intérieur d'emacs ! Comment installer des packages,  (base base base d'org mode) (init.el et config .org)
+
+
+**** Comment on va faire ?
+
+- straight : méthode de téléchargement des packages. D'autres opération utiles comme freeze, etc. Voir ce lien : TODO
+- use-package : permet de simplifier la déclaration pour télécharger les packages
+
+**** Explication du .emacs.d
+
+1. init.el
+   Straight + Lance les options
+2. config.org, la suite
+3. config.el, pareil que le .org mais est chargé par emacs.
+4. earlyinit.el, charge une configuration tôt (avant la fenêtre même)
+
+
+**** Lets'go
+
+Copier le init.el et le config.org dans son emacs.d. Attendre 1 2 minutes... et c'est partie !
+
+**** Comment installer des packages avec use-package
+
+Déclaration des package :
+
+#+begin_src emacs-lisp
+
+
+    ;;commentaires
+    ;; les parties sont séparé par :nomdelapartie
+
+    (use-package nomdupackage
+      ;; :straight nil, ne télécharge pas
+      ;; :ensure t, le télécharge mais pas à mettre pour vous car automatique
+      :if (condition)
+
+      :after nomd'unautrepackage
+
+      :hook (org . tool-bar-mode) ;;quand org, alors active la tool-bar
+      ;; :hook ((modeahook unautre encoreun) . lemodeaactiver) ;; autre syntax
+
+      :init ;;toute cette partie est chargé AVANT le package
+      (setq unevariableamoddifavantlepackage nil)
+      (activer-un-mode-avant t)
+
+      :custom
+      (unevariabledupackagesanslesetq t)
+      ;;commentaires
+
+      :config ;;toute cette partie est chargé APRÈS le package. C'est comme dans le init.el
+
+      (setq mavariable nil) ;;setq = moddif de la valeur de la variable
+      (add-hook 'org-mode-hook 'electric-pair-mode) ;; autre syntax du hook
+
+      ) ;;parenthèse de fin du package
+
+    (add-hook 'org-mode-hook 'electric-pair-mode) ;; hook que l'on peut aussi mettre hors du package, mais moin propre  
+
+
+  ;; version compact :
+  (use-package all-the-icons-dired)
+
+  (use-package flycheck-grammalecte
+    :after flycheck
+    :hook(org-mode . flycheck) ;; pour pouvoir corriger en org mode
+    :init
+    (setq
+     ;; pas de faute avec les '
+     flycheck-grammalecte-report-apos nil
+     ;; pas de faute avec les espaces insécable
+     flycheck-grammalecte-report-nbsp nil
+     ;; pas de faute avec pleins d'espaces et de tab
+     flycheck-grammalecte-report-esp nil)
+    :config
+    ;;à faire pour enlever l'erreur des tirés
+    ;; pour enlever l'erreur des des begin_src etc
+   
+    (grammalecte-download-grammalecte)
+    (flycheck-grammalecte-setup)
+    )
+
+
+
+#+end_src
+
+**** Comment faire une bonne config ?
+
+ Les if, when, tuto xah lisp. Utiliser la super fonction pour rapidement déboguer (attention de pas mettre de "")
+
+*** Raccourcis
+
+Important car c'est le lien avec votre pc. Bon raccourcis = bonne vitesse
+
+
+**** Remapper ses contrôles sur ses pouces (conseillé)
+
+xmodmap package + un fichier spécifique qui s'appelle "Xmodmap"
+
+Dans le fichier :
+
+#+begin_example
+! commentaire
+
+! mes caps lock comme touche menu 
+keycode 66 = Menu
+
+
+! met control sur alt, windows sur fn, et alt sur controle
+clear control
+clear mod1
+
+keycode 37 = Alt_L Meta_L
+keycode 64 = Control_L
+keycode 108 = Control_R 
+
+
+add control = Control_L Control_R
+add mod1 = Alt_L Meta_L
+
+#+end_example
+
+Puis, juste faire la commande :
+#+begin_src sh
+xmodmap ~/chemin/vers/lefichier/Xmodmap
+#+end_src
+
+Puis mettre cette commande dans les applications au démarrage, et hop !
+
+**** ESSAYEZ DE TAPER À DIX DOIGTS. Au moins les commandes, après le texte normal tant pis. (TRÈS CONSEILLÉ)
+
+Bien
+[[file:images/méthode1.png]]
+
+Variantes
+[[file:images/méthode2.png]]
+
+Celle de base. Testez.... vous allez rire à quel point c'est dur mdrr.
+[[file:images/méthode3.png]]
+
+Prenez la méthode avec laquelle vous êtes le plus alaise (je vous conseille quand même la deux)
+
+**** Les raccourcis
+
+Plusieurs options possibles :
+
 1. xah-fly-key
-2. evil-mode
-   une touche un ordre
-3. God mode
+2. evil-mode, vim like
+3. God mode 
    C-x C-s = x s
 4. General (plusieurs touches, pour chaque mode)
 5. key-chord, pour 2 touche une commande ! (ne pas oublier de l'activer)
    #+begin_src emacs-lisp
-	   (key-chord-define-global "bb"     'undo)
-	   (key-chord-define-global "zb"     'tool-bar-mode)
-      (key-chord-define-global "qq"     "the ")
-      (key-chord-define-global "QQ"     "The ")
- (key-chord-define c-mode-map "az"  "\C-e;")
- (key-chord-define c-mode-map "{"  "{\n\n}\C-p\t")
+     (key-chord-define-global "bb"     'undo)
+     (key-chord-define-global "zb"     'tool-bar-mode)
+     (key-chord-define-global "qq"     "the ")
+     (key-chord-define-global "QQ"     "The ")
+     (key-chord-define c-mode-map "az"  "\C-e;")
+     (key-chord-define c-mode-map "{"  "{\n\n}\C-p\t")
 
 #+end_src
 6. Cedet ? [[http://cedet.sourceforge.net/][ici]]
 7. ryo-modal https://github.com/Kungsgeten/ryo-modal
    #+begin_src emacs-lisp
-(modalka-define-kbd "W" "M-w")
-(modalka-define-kbd "Y" "M-y")
-(modalka-define-kbd "a" "C-a")
-(modalka-define-kbd "b" "C-b")
-(modalka-define-kbd "e" "C-e")
-(modalka-define-kbd "f" "C-f")
-(modalka-define-kbd "g" "C-g")
-(modalka-define-kbd "n" "C-n")
-(modalka-define-kbd "p" "C-p")
-(modalka-define-kbd "w" "C-w")
-(modalka-define-kbd "y" "C-y")
-(modalka-define-kbd "SPC" "C-SPC")
+     (modalka-define-kbd "W" "M-w")
+     (modalka-define-kbd "Y" "M-y")
+     (modalka-define-kbd "a" "C-a")
+     (modalka-define-kbd "b" "C-b")
+     (modalka-define-kbd "e" "C-e")
+     (modalka-define-kbd "f" "C-f")
+     (modalka-define-kbd "g" "C-g")
+     (modalka-define-kbd "n" "C-n")
+     (modalka-define-kbd "p" "C-p")
+     (modalka-define-kbd "w" "C-w")
+     (modalka-define-kbd "y" "C-y")
+     (modalka-define-kbd "SPC" "C-SPC")
    #+end_src
+**** Xah-fly-keys personnalisation
 
 
-*** Rendre Emacs convenable (vertico et company + faire ses premieres fonction en lisp), conseiller tuto de xah
-*** Emacs et org mode --- Babel, export, formule latex
-*** Rendre Emacs efficace pour la programmation
-*** Emacs et org mode poussés
-*** Ma config en point stratégieque
-*** Faire des vidéos sur un nouveau ubuntu pour vraiment montrer comment tout marche (vidéos longues)?
+*** Rendre Emacs convenable
+
+1. Vertico and co.
+
+2. which key
+
+3. Esthétique
+
+4. Les bookmarks (avec le package burly)
+   - bookmark-set placer un bookmark
+   - burly-bookmark-windows sauvegarder ses windows
+   - consult-bookmark pour les voir
+   - bookmark-bmenu-list
+   
+
+*** TODO Emacs et org mode --- Babel, export, formule latex
+*** TODO Rendre Emacs efficace pour la programmation
+**** Lsp-mode
+**** Les connections avec le reste
+***** Company
+***** etc
+*** TODO Emacs et org mode poussés
+*** TODO Ma config en point stratégieque
+*** TODO Faire des vidéos sur un nouveau ubuntu pour vraiment montrer comment tout marche (vidéos longues)?
+** Liens et astuces utiles
+
+*** Les choses pour trouver de l'aide
+
+**** Les liens
+
+- les autres chaînes youtube
+  1. [[https://www.youtube.com/channel/UCAiiOTio8Yu69c3XnR7nQBQ][system crafter]]
+  2. [[https://cestlaz.github.io/stories/emacs/][C'est la Z]]
+- le site de xah-fly-key TODO
+- le manuel d'org mode,  pour org mode. TODO
+- 
+
+**** Dans emacs même
+
+- avec xah (mode commande puis space j) pour écrire ses propre fonction (avancée)
+  + describe function/variable
+  + customize variable (juste pour savoir ce qu'il faut mettre dedans, mais faire des setq)
+- C-h t – Emacs tutorial / xah fly tutoriel
+
+
+    
+
+
+*** Les astuces
+
+**** Faire des macro
+F3, les opérations, puis F4.
+Pour que se soit réussi, il faut
+**** M-x straight-visit-package-website
+Pour directement avoir le site d'un package. 
