@@ -1,18 +1,21 @@
 * Emacs en français (oui c'est moyen comme titre)
+:PROPERTIES:
+:ID:       71691c9a-a6be-4f76-af75-3eb938f0622b
+:END:
 
 Liens vers la playlist youtube : TODO
+Liens vers mon .emacs.d : TODO
 
 *But de ce repos*
    Ce repos à pour but de ne pas à avoir à revoir la vidéo. Ces notes ne suffisent pas, car je donne les explication en vidéo, mais permettent d'aller beaucoup plus vite et de se dire "à oui il avait parlé de ça, je vais pas revoir la vidéo mais plutôt aller voir les notes". 
 
 ** Contexte
-
 Je suis sous un linux, Ubuntu 20.04.3 LTS. (faire lsb_release -a)
 
 *** Prérequis : 
 
 1. Avoir les bases de linux : cd, ls, savoir insta
-2. Avoir git et (pas sûr que se soit nécessaire) un compte github pour télécharger des packages.
+2. Avoir git et savoir les commandes de base et (pas sûr que se soit nécessaire) un compte github pour télécharger des packages.
 
 *** Motivation :
 
@@ -21,6 +24,7 @@ Pourquoi ceci ? Tout simplement pour deux raisons :
 2. et je trouve qu'il y a un manque de doc en français, car l'anglais peut être une barrière pour les débutants. J'ai hésité à le faire en anglais, mais il y bien assez d'info en anglais comme ça.
 
 *** Pourquoi emacs
+
 Emacs est, pour moi, le meilleur éditeur de texte pour ces raisons :
 - extrèmement modulable et personnalisable via des packages divers et varié
 - permet d'aller très très très vite
@@ -28,6 +32,7 @@ Emacs est, pour moi, le meilleur éditeur de texte pour ces raisons :
 - éditeur programmable : possibilité d'implémenter ses propres fonctions (niveau avancé)
 - fait parti de monde de logiciel libre, gratuit et open-source, ce qui est génial.
 
+Et Vim ? Tout ce qui est dans vim est possible dans emacs, donc go emacs !
 
 ** Le programme des vidéos
 
@@ -39,8 +44,6 @@ m-y  meta-y
 
 Pour lancer des commandes : M-x taperlenomdelacommande
 
-
-
 **** Le programme, voir les sous titres
 
 **** But
@@ -51,9 +54,9 @@ Vous donnez les pistes pour aller plus vite, mais je pourrais jamais vous rempla
 
 Pourquoi cette version ?
 Stable, et le 28.0 est en bêta, donc pas stable logiquement et ya des bugs.
+Edit : sortie de emacs 28.1
 
-Si vous voulez emacs 28 : [[https://git.savannah.gnu.org/cgit/emacs.git/tree/INSTALL][suivre les instructions ici]]
-
+Avant (ne pas suivre ça) : 
 #+begin_src sh
   sudo add-apt-repository ppa:kelleyk/emacs
   sudo apt-get update
@@ -64,7 +67,14 @@ Si vous voulez emacs 28 : [[https://git.savannah.gnu.org/cgit/emacs.git/tree/INS
   emacs
 #+end_src
 
+Après : emacs 28.1 stable
 
+#+begin_src emacs-lisp
+sudo snap install emacs-28 ;; faire des tab pour être sur de la commande
+#+end_src
+
+
+Ce qui compte : être sûr d'être 27.X ou +.
 
 *** État d'esprit :
 **** TODO 1.a Que voit on au démarrage + explication du .emacs.d ?
@@ -209,8 +219,8 @@ Déclaration des package :
 
 *** Raccourcis
 
-Important car c'est le lien avec votre pc. Bon raccourcis = bonne vitesse
-
+Important car c'est le seul et unique lien avec votre pc. Bon raccourcis = bonne
+vitesse (logique)
 
 **** Remapper ses contrôles sur ses pouces (conseillé)
 
@@ -261,14 +271,16 @@ Prenez la méthode avec laquelle vous êtes le plus alaise (je vous conseille qu
 
 **** Les raccourcis
 
+NE PAS GARDER LES RACCOURCIS DE BASE. 
+
 Plusieurs options possibles :
 
-1. xah-fly-key
-2. evil-mode, vim like
-3. God mode 
+1. xah-fly-key (+)
+2. evil-mode, vim like (ok)
+3. God mode (-)
    C-x C-s = x s
-4. General (plusieurs touches, pour chaque mode)
-5. key-chord, pour 2 touche une commande ! (ne pas oublier de l'activer)
+4. General (plusieurs touches, pour chaque mode) (-)
+5. key-chord, pour 2 touche une commande ! (ne pas oublier de l'activer) (-)
    #+begin_src emacs-lisp
      (key-chord-define-global "bb"     'undo)
      (key-chord-define-global "zb"     'tool-bar-mode)
@@ -294,24 +306,26 @@ Plusieurs options possibles :
      (modalka-define-kbd "y" "C-y")
      (modalka-define-kbd "SPC" "C-SPC")
    #+end_src
-**** Xah-fly-keys personnalisation
 
+*** Raccourcis bis : xah-fly-keys
+
+**** Xah-fly-keys personnalisation
+SPC C-h pour les aides !
 
 *** Rendre Emacs convenable
 
 1. Vertico and co.
-
 2. which key
-
 3. Esthétique
-
-4. Les bookmarks (avec le package burly)
-   - bookmark-set placer un bookmark
-   - burly-bookmark-windows sauvegarder ses windows
-   - consult-bookmark pour les voir
-   - bookmark-bmenu-list
+4. les astuces utiles
+   + Les bookmarks (avec le package burly)
+     - bookmark-set placer un bookmark
+     - burly-bookmark-windows sauvegarder ses windows
+     - consult-bookmark pour les voir
+     - bookmark-bmenu-list
+   + utiliser les fichiers récents : consult-recent-file (recentf-open-files)
+   + abbrev [[http://xahlee.info/emacs/emacs/emacs_abbrev_mode.html][voir ce site aussi]]
    
-
 *** TODO Emacs et org mode --- Babel, export, formule latex
 *** TODO Rendre Emacs efficace pour la programmation
 **** Lsp-mode
@@ -336,16 +350,33 @@ Plusieurs options possibles :
 
 **** Dans emacs même
 
-- avec xah (mode commande puis space j) pour écrire ses propre fonction (avancée)
+- avec xah (passer en mode commande, puis "SPC") pour écrire ses propres fonctions (avancée)
   + describe function/variable
-  + customize variable (juste pour savoir ce qu'il faut mettre dedans, mais faire des setq)
+  + customize variable (juste pour savoir ce qu'il faut mettre dedans, mais
+    faire des setq)
+- pour savoir (presque) toutes les touches de xah, SPC C-h.
 - C-h t – Emacs tutorial / xah fly tutoriel
 
-
-    
-
-
 *** Les astuces
+
+**** Les commandes utiles :
+
+1. 
+2. dired-jump
+3. =xah-pop-local-mark-ring=
+4. xah-shrink-whitespaces
+5. xah-open-in-external-app
+6. xah-open-in-terminal
+
+**** Les commandes moins utiles :
+
+1. xah-move-block-down  et xah-move-block-up
+2. 
+3. 
+
+
+**** La "doc" de xah-fly-keys
+SPC C-h
 
 **** Faire des macro
 F3, les opérations, puis F4.
