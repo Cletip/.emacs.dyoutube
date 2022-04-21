@@ -1,0 +1,10 @@
+
+*** TODO Emacs et org mode --- Babel, export, formule latex
+*** TODO Rendre Emacs efficace pour la programmation
+**** Lsp-mode
+**** Les connections avec le reste
+***** Company
+***** etc
+*** TODO Emacs et org mode poussés
+*** TODO Ma config en point stratégieque
+*** TODO Faire des vidéos sur un nouveau ubuntu pour vraiment montrer comment tout marche (vidéos longues)?

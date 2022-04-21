@@ -1,0 +1,69 @@
+
+
+*** État d'esprit :
+
+Explication rapide emacs :
+- éditeur de texte et +
+- lancer des commandes (un raccourci = une commande)
+- extensible 
+
+Deux raccourcis essentiels : C-g (annulé) et M-x (lancer une commande).
+
+
+
+**** TODO 1.a Que voit-on au démarrage + explication du .emacs.d ?
+
+
+
+1. Menu-bar 
+2. tool-bar 
+3. buffer et windows
+4. mini-buffer, M-x
+
+Idée de faire du code partout, exécuter du lisp. (exemple tool-bar-mode)
+
+Mais où est la configuration ?
+
+    ~/.emacs or ~/.emacs.el - vielle configuration, à supprimer et vraiment pas recommandé
+    ~/.emacs.d/init.el - ma version de configuration, pratique pour faire des test.
+(    ~/.config/emacs/init.el - existe)
+
+    Emacs va regarder partout, et dès qu'il en trouve un arrête de chercher. On
+    prendra .emacs.d
+    
+Pour d'installer la config du git :
+#+begin_src shell
+  git clone 			# + url du git à mettre
+#+end_src
+Puis placer .emacs.dBase dans le dossier home de votre utilisateur (~).
+Enfin, renommer le en .emacs.d. Si vous aviez déjà une autre configuration, ne
+pas hésiter à renommer en .emacs.dsave.
+**** 1.b Les modes (major et minor), les hooks, la base des fonctions lisp.
+
+- Major mode = mode principale d'emacs, chargé une fois.
+- Minor mode = mode qui s'additionne au major-mode, il peut bien-sûr y en avoir plusieurs
+
+#+begin_src emacs-lisp
+
+  (add-hook 'dired-mode-hook 'auto-revert-mode)
+
+  (defun test ()
+    (interactive)
+
+    ;;mettre le code ici
+
+    )
+
+  (defun Policepourcoder ()
+    (interactive)
+    (set-face-attribute 'default nil
+                        :font "JetBrains Mono"
+                        :weight 'light
+                        ;; :height 150
+                        )
+    )
+
+  (add-hook 'lsp-mode-hook 'Policepourcoder)
+
+
+#+end_src

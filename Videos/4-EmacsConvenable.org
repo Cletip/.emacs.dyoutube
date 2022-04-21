@@ -1,0 +1,16 @@
+
+
+*** Rendre Emacs convenable
+
+1. Vertico and co.
+2. which key
+3. Esthétique
+4. les astuces utiles
+   + Les bookmarks (avec le package burly)
+     - bookmark-set placer un bookmark
+     - burly-bookmark-windows sauvegarder ses windows
+     - consult-bookmark pour les voir
+     - bookmark-bmenu-list
+   + utiliser les fichiers récents : consult-recent-file (recentf-open-files)
+   + abbrev [[http://xahlee.info/emacs/emacs/emacs_abbrev_mode.html][voir ce site aussi]]
+   

@@ -1,0 +1,59 @@
+
+
+*** Programme, but, et installation d'emacs.
+
+
+*Convention* : 
+- C-x = control-x etc
+- M-y = meta-y etc
+
+Pour lancer des commandes : M-x taperlenomdelacommande
+
+Je vais le package Keycast pour voir les commandes à l'écran (mais pas faire attention aux touches, mais plutôt aux =commandes= !)
+
+
+**** Orginasation
+
+2 dossiers .emacs.d : 
+1. un basique que vous copierez, ce sera votre base
+2. un second, ou je mettrai la configuration au fur et à mesure
+
+**** Le programme
+
+Voir le dossier Vidéo
+Ne pas hésiter à directement aller voir les fonctionnalités après avoir vu la
+base (après la 4).
+
+**** But
+
+Vous donnez les pistes pour aller plus vite, mais je pourrais jamais vous remplacer ;).
+
+**** Installation
+
+*Si vous aviez une sauvegarde, renommer votre .emacs.d en .emacs.dsave pour ne pas tout perdre. Si vous ne comprenez pas cette phrase, passez à la suite*
+
+Pourquoi cette version ?
+Stable, et le 28.0 est en bêta, donc pas stable logiquement et ya des bugs.
+Edit : sortie de emacs 28.1
+Après : emacs 28.1 stable
+
+#+begin_src emacs-lisp
+sudo snap install emacs-28 ;; faire des tab pour être sur de la commande
+#+end_src
+
+
+Ce qui compte : être sûr d'être 27.X ou +.
+
+Avant (ne pas suivre ça) : 
+#+begin_src sh
+  sudo add-apt-repository ppa:kelleyk/emacs
+  sudo apt-get update
+  sudo apt install emacs #puis la touche tab pour compléter. prendre la dernière version (27 ou 27.1 ou 27.2 normalement. Prendre la dernière)
+  # tester avec cette commande la version d'emacs:
+  emacs --version
+  # lancer emacs !
+  emacs
+#+end_src
+
+
+

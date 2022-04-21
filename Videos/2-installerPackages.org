@@ -1,0 +1,89 @@
+
+*** L'intérieur d'emacs ! Comment installer des packages,  (base base base d'org mode) (init.el et config .org)
+
+
+**** Comment on va faire ?
+
+- straight : méthode de téléchargement des packages. D'autres opération utiles comme freeze, etc. Voir ce lien : TODO
+- use-package : permet de simplifier la déclaration pour télécharger les packages
+
+**** Explication du .emacs.d
+
+1. init.el
+   Straight + Lance les options
+2. config.org, la suite
+3. config.el, pareil que le .org mais est chargé par emacs.
+4. earlyinit.el, charge une configuration tôt (avant la fenêtre même)
+
+
+**** Lets'go
+
+Copier le init.el et le config.org dans son emacs.d. Attendre 1 2 minutes... et c'est partie !
+
+**** Comment installer des packages avec use-package
+
+Déclaration des package :
+
+#+begin_src emacs-lisp
+
+
+    ;;commentaires
+    ;; les parties sont séparé par :nomdelapartie
+
+    (use-package nomdupackage
+      ;; :straight nil, ne télécharge pas
+      ;; :ensure t, le télécharge mais pas à mettre pour vous car automatique
+      :if (condition)
+
+      :after nomd'unautrepackage
+
+      :hook (org . tool-bar-mode) ;;quand org, alors active la tool-bar
+      ;; :hook ((modeahook unautre encoreun) . lemodeaactiver) ;; autre syntax
+
+      :init ;;toute cette partie est chargé AVANT le package
+      (setq unevariableamoddifavantlepackage nil)
+      (activer-un-mode-avant t)
+
+      :custom
+      (unevariabledupackagesanslesetq t)
+      ;;commentaires
+
+      :config ;;toute cette partie est chargé APRÈS le package. C'est comme dans le init.el
+
+      (setq mavariable nil) ;;setq = moddif de la valeur de la variable
+      (add-hook 'org-mode-hook 'electric-pair-mode) ;; autre syntax du hook
+
+      ) ;;parenthèse de fin du package
+
+    (add-hook 'org-mode-hook 'electric-pair-mode) ;; hook que l'on peut aussi mettre hors du package, mais moin propre  
+
+
+  ;; version compact :
+  (use-package all-the-icons-dired)
+
+  (use-package flycheck-grammalecte
+    :after flycheck
+    :hook(org-mode . flycheck) ;; pour pouvoir corriger en org mode
+    :init
+    (setq
+     ;; pas de faute avec les '
+     flycheck-grammalecte-report-apos nil
+     ;; pas de faute avec les espaces insécable
+     flycheck-grammalecte-report-nbsp nil
+     ;; pas de faute avec pleins d'espaces et de tab
+     flycheck-grammalecte-report-esp nil)
+    :config
+    ;;à faire pour enlever l'erreur des tirés
+    ;; pour enlever l'erreur des des begin_src etc
+   
+    (grammalecte-download-grammalecte)
+    (flycheck-grammalecte-setup)
+    )
+
+
+
+#+end_src
+
+**** Comment faire une bonne config ?
+
+ Les if, when, tuto xah lisp. Utiliser la super fonction pour rapidement déboguer (attention de pas mettre de "")

@@ -1,0 +1,90 @@
+
+* Raccourcis
+
+Important car c'est le seul et unique lien avec votre pc. Bon raccourcis = bonne
+vitesse (logique)
+
+**** Remapper ses contrôles sur ses pouces (conseillé)
+
+xmodmap package + un fichier spécifique qui s'appelle "Xmodmap"
+
+Dans le fichier :
+
+#+begin_example
+! commentaire
+
+! mes caps lock comme touche menu 
+keycode 66 = Menu
+
+
+! met control sur alt, windows sur fn, et alt sur controle
+clear control
+clear mod1
+
+keycode 37 = Alt_L Meta_L
+keycode 64 = Control_L
+keycode 108 = Control_R 
+
+
+add control = Control_L Control_R
+add mod1 = Alt_L Meta_L
+
+#+end_example
+
+Puis, juste faire la commande :
+#+begin_src sh
+xmodmap ~/chemin/vers/lefichier/Xmodmap
+#+end_src
+
+Puis mettre cette commande dans les applications au démarrage, et hop !
+
+**** ESSAYEZ DE TAPER À DIX DOIGTS. Au moins les commandes, après le texte normal tant pis. (TRÈS CONSEILLÉ)
+
+Bien
+[[file:images/méthode1.png]]
+
+Variantes
+[[file:images/méthode2.png]]
+
+Celle de base. Testez.... vous allez rire à quel point c'est dur mdrr.
+[[file:images/méthode3.png]]
+
+Prenez la méthode avec laquelle vous êtes le plus alaise (je vous conseille quand même la deux)
+
+**** Les raccourcis
+
+NE PAS GARDER LES RACCOURCIS DE BASE. 
+
+Plusieurs options possibles :
+
+1. xah-fly-key (+)
+2. evil-mode, vim like (ok)
+3. God mode (-)
+   C-x C-s = x s
+4. General (plusieurs touches, pour chaque mode) (-)
+5. key-chord, pour 2 touche une commande ! (ne pas oublier de l'activer) (-)
+   #+begin_src emacs-lisp
+     (key-chord-define-global "bb"     'undo)
+     (key-chord-define-global "zb"     'tool-bar-mode)
+     (key-chord-define-global "qq"     "the ")
+     (key-chord-define-global "QQ"     "The ")
+     (key-chord-define c-mode-map "az"  "\C-e;")
+     (key-chord-define c-mode-map "{"  "{\n\n}\C-p\t")
+
+#+end_src
+6. Cedet ? [[http://cedet.sourceforge.net/][ici]]
+7. ryo-modal https://github.com/Kungsgeten/ryo-modal
+   #+begin_src emacs-lisp
+     (modalka-define-kbd "W" "M-w")
+     (modalka-define-kbd "Y" "M-y")
+     (modalka-define-kbd "a" "C-a")
+     (modalka-define-kbd "b" "C-b")
+     (modalka-define-kbd "e" "C-e")
+     (modalka-define-kbd "f" "C-f")
+     (modalka-define-kbd "g" "C-g")
+     (modalka-define-kbd "n" "C-n")
+     (modalka-define-kbd "p" "C-p")
+     (modalka-define-kbd "w" "C-w")
+     (modalka-define-kbd "y" "C-y")
+     (modalka-define-kbd "SPC" "C-SPC")
+   #+end_src
