@@ -1,11 +1,12 @@
 
 
-* Emacs en français (oui c'est moyen comme titre)
+* Présentation
 :PROPERTIES:
 :ID:       71691c9a-a6be-4f76-af75-3eb938f0622b
 :END:
 
 Liens vers la playlist youtube : TODO
+
 Liens vers mon .emacs.d : TODO
 
 *But de ce repos*
@@ -28,7 +29,9 @@ Je suis sous un linux, Ubuntu 20.04.3 LTS. (faire "lsb_release -a" pour voir la 
 
 Pourquoi ceci ? Tout simplement pour deux raisons :
 1. pour des potes , donc c'est cool.
-2. et je trouve qu'il y a un manque de doc en français, car l'anglais peut être une barrière pour les débutants. J'ai hésité à le faire en anglais, mais il y bien assez d'info en anglais comme ça.
+2. et je trouve qu'il y a un manque de doc en français, car l'anglais peut être
+   une barrière pour les débutants. J'ai hésité à le faire en anglais, mais il y
+   a bien assez d'info en anglais comme ça.
 
 *** Pourquoi emacs
 
@@ -37,57 +40,42 @@ Emacs est, pour moi, le meilleur éditeur de texte pour ces raisons :
 - permet d'aller très très très vite
 - n'est pas qu'un simple éditeur de texte ([[https://www.orgmode.org/fr/][org-mode]], faire du code, mails, base de donnée etc)
 - éditeur programmable : possibilité d'implémenter ses propres fonctions (niveau avancé)
-- fait parti de monde de logiciel libre, gratuit et open-source, ce qui est génial.
+- fait partie de monde de logiciel libre, gratuit et open-source, ce qui est génial.
 
 Et Vim ? Tout ce qui est dans vim est possible dans emacs, donc go emacs !
 
-
 ** Liens et astuces utiles
-
-*** Les choses pour trouver de l'aide
-
-**** Les liens
-
-- les autres chaînes youtube
-  1. [[https://www.youtube.com/channel/UCAiiOTio8Yu69c3XnR7nQBQ][system crafter]]
-  2. [[https://cestlaz.github.io/stories/emacs/][C'est la Z]]
-- le site de xah-fly-key TODO
-- le manuel d'org mode,  pour org mode. TODO
-- 
-
-**** Dans emacs même
-
-- avec xah (passer en mode commande, puis "SPC") pour écrire ses propres fonctions (avancée)
-  + describe function/variable
-  + customize variable (juste pour savoir ce qu'il faut mettre dedans, mais
-    faire des setq)
-- pour savoir (presque) toutes les touches de xah, SPC C-h.
-- C-h t – Emacs tutorial / xah fly tutoriel
 
 *** Les astuces
 
 **** Les commandes utiles :
 
-1. 
-2. dired-jump
-3. =xah-pop-local-mark-ring=
-4. xah-shrink-whitespaces
-5. xah-open-in-external-app
-6. xah-open-in-terminal
-7. xah-copy-file-path
-
-**** Les commandes moins utiles :
-
-1. xah-move-block-down  et xah-move-block-up
-2. 
-3. 
-
-
-**** La "doc" de xah-fly-keys
-SPC C-h
+1. describe-function
+2. describe-variable
+3. straight-visit-package-website
+4. dired-jump
+5. =xah-pop-local-mark-ring=
+6. xah-shrink-whitespaces
+7. xah-open-in-external-app
+8. xah-open-in-terminal
+9. xah-copy-file-path
+10. balance-windows
 
 **** Faire des macro
 F3, les opérations, puis F4.
-Pour que se soit réussi, il faut
-**** M-x straight-visit-package-website
-Pour directement avoir le site d'un package. 
+**** M-x 
+*** Les choses pour trouver de l'aide
+
+**** Dans emacs même
+
+- C-h t – Emacs tutorial / xah fly tutoriel
+- pour savoir (presque) toutes les touches de xah, SPC C-h.
+
+**** Les liens ailleurs
+
+- stackoverflow évidemment
+- le site de xah-fly-key TODO
+- le manuel d'org mode,  pour org mode. TODO
+- les autres chaînes youtube
+  1. [[https://www.youtube.com/channel/UCAiiOTio8Yu69c3XnR7nQBQ][system crafter]]
+  2. [[https://cestlaz.github.io/stories/emacs/][C'est la Z]]
