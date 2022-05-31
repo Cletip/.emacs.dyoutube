@@ -1,13 +1,15 @@
 
-*** L'intérieur d'emacs ! Comment installer des packages,  (base base base d'org mode) (init.el et config .org)
+*** L'intérieur d'emacs ! Comment installer des packages, base d'org mode
 
 
 **** Comment on va faire ?
 
-- straight : méthode de téléchargement des packages. D'autres opération utiles comme freeze, etc. Voir ce lien : TODO
-- use-package : permet de simplifier la déclaration pour télécharger les packages
+- straight : méthode de téléchargement des packages. D'autres opérations utiles comme freeze, mettre à jour tous les packages, etc.
+- use-package : permet de simplifier la déclaration pour télécharger les packages.
 
 **** Explication du .emacs.d
+
+Après téléchargement et renomage du .emacs.dBase
 
 1. init.el
    Straight + Lance les options
@@ -58,9 +60,10 @@ Déclaration des package :
     (add-hook 'org-mode-hook 'electric-pair-mode) ;; hook que l'on peut aussi mettre hors du package, mais moin propre  
 
 
-  ;; version compact :
+  ;; version rapide :
   (use-package all-the-icons-dired)
 
+  ;;version avec des options :
   (use-package flycheck-grammalecte
     :after flycheck
     :hook(org-mode . flycheck) ;; pour pouvoir corriger en org mode
@@ -75,7 +78,7 @@ Déclaration des package :
     :config
     ;;à faire pour enlever l'erreur des tirés
     ;; pour enlever l'erreur des des begin_src etc
-   
+
     (grammalecte-download-grammalecte)
     (flycheck-grammalecte-setup)
     )

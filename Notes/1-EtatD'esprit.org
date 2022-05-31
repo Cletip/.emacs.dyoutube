@@ -8,12 +8,12 @@ Explication rapide emacs :
 - extensible 
 
 Deux raccourcis essentiels : C-g (annulé) et M-x (lancer une commande).
+D'autres raccourcis de bases : 
+- C-n et C-p : ligne suivante et précédente
+- C-x C-f : ouvrir fichier
+- C-x C-c : fermer emacs
 
-
-
-**** TODO 1.a Que voit-on au démarrage + explication du .emacs.d ?
-
-
+**** 1.a Démarrage + explication du .emacs.d ?
 
 1. Menu-bar 
 2. tool-bar 
@@ -26,18 +26,24 @@ Mais où est la configuration ?
 
     ~/.emacs or ~/.emacs.el - vielle configuration, à supprimer et vraiment pas recommandé
     ~/.emacs.d/init.el - ma version de configuration, pratique pour faire des test.
-(    ~/.config/emacs/init.el - existe)
+    (~/.config/emacs/init.el - existe)
 
     Emacs va regarder partout, et dès qu'il en trouve un arrête de chercher. On
     prendra .emacs.d
     
-Pour d'installer la config du git :
+Pour installer la config du git :
 #+begin_src shell
-  git clone 			# + url du git à mettre
+  # Set your username:
+  git config --global user.name "FIRST_NAME LAST_NAME"
+  # Set your email address:
+  git config --global user.email "MY_NAME@example.com"
+
+  git clone
 #+end_src
 Puis placer .emacs.dBase dans le dossier home de votre utilisateur (~).
 Enfin, renommer le en .emacs.d. Si vous aviez déjà une autre configuration, ne
 pas hésiter à renommer en .emacs.dsave.
+
 **** 1.b Les modes (major et minor), les hooks, la base des fonctions lisp.
 
 - Major mode = mode principale d'emacs, chargé une fois.
@@ -47,23 +53,6 @@ pas hésiter à renommer en .emacs.dsave.
 
   (add-hook 'dired-mode-hook 'auto-revert-mode)
 
-  (defun test ()
-    (interactive)
-
-    ;;mettre le code ici
-
-    )
-
-  (defun Policepourcoder ()
-    (interactive)
-    (set-face-attribute 'default nil
-                        :font "JetBrains Mono"
-                        :weight 'light
-                        ;; :height 150
-                        )
-    )
-
-  (add-hook 'lsp-mode-hook 'Policepourcoder)
-
+  (add-hook 'c-mode-hook 'nomdelafonction)
 
 #+end_src

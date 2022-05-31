@@ -3,9 +3,10 @@
 *** Rendre Emacs convenable
 
 1. Vertico and co.
-2. which key
-3. Esthétique
-4. les astuces utiles
+2. Which-key
+3. Winner-mode
+4. Esthétique
+5. les astuces utiles
    + Les bookmarks (avec le package burly)
      - bookmark-set placer un bookmark
      - burly-bookmark-windows sauvegarder ses windows

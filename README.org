@@ -1,5 +1,4 @@
 
-
 * Présentation
 :PROPERTIES:
 :ID:       71691c9a-a6be-4f76-af75-3eb938f0622b
@@ -7,7 +6,7 @@
 
 Liens vers la playlist youtube : TODO
 
-Liens vers mon .emacs.d : TODO
+Liens vers mon .emacs.d : [[https://github.com/Cletip/.emacs.d][ici]]
 
 *But de ce repos*
    Ce repos à pour but de ne pas à avoir à revoir la vidéo. Ces notes ne
@@ -17,7 +16,7 @@ Liens vers mon .emacs.d : TODO
    pull-request pour étoffer les notes si vous voulez rajouter des détails :)
 
 
-** Contexte
+** Contexte rapide
 Je suis sous un linux, Ubuntu 20.04.3 LTS. (faire "lsb_release -a" pour voir la version)
 
 *** Prérequis : 
@@ -35,11 +34,11 @@ Pourquoi ceci ? Tout simplement pour deux raisons :
 
 *** Pourquoi emacs
 
-Emacs est, pour moi, le meilleur éditeur de texte pour ces raisons :
+Emacs est, pour moi, le meilleur "éditeur de texte" pour ces raisons :
 - extrèmement modulable et personnalisable via des packages divers et varié
 - permet d'aller très très très vite
 - n'est pas qu'un simple éditeur de texte ([[https://www.orgmode.org/fr/][org-mode]], faire du code, mails, base de donnée etc)
-- éditeur programmable : possibilité d'implémenter ses propres fonctions (niveau avancé)
+- éditeur programmable : possibilité d'implémenter ses propres fonctions (niveau intermédiaire)
 - fait partie de monde de logiciel libre, gratuit et open-source, ce qui est génial.
 
 Et Vim ? Tout ce qui est dans vim est possible dans emacs, donc go emacs !
@@ -47,9 +46,8 @@ Et Vim ? Tout ce qui est dans vim est possible dans emacs, donc go emacs !
 ** Liens et astuces utiles
 
 *** Les astuces
-
+**** Utiliser M-x pour des commandes peu utilisées
 **** Les commandes utiles :
-
 1. describe-function
 2. describe-variable
 3. straight-visit-package-website
@@ -63,9 +61,7 @@ Et Vim ? Tout ce qui est dans vim est possible dans emacs, donc go emacs !
 
 **** Faire des macro
 F3, les opérations, puis F4.
-**** M-x 
 *** Les choses pour trouver de l'aide
-
 **** Dans emacs même
 
 - C-h t – Emacs tutorial / xah fly tutoriel

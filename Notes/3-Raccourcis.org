@@ -12,9 +12,10 @@ Dans le fichier :
 
 #+begin_example
 ! commentaire
+! pour savoir le keycode d'une touche : "xev" dans un terminal
 
-! mes caps lock comme touche menu 
-keycode 66 = Menu
+! mes caps lock comme touche menu, pour xah-fly-key
+keycode 66 = Home NoSymbol Home
 
 
 ! met control sur alt, windows sur fn, et alt sur controle
@@ -51,9 +52,11 @@ Celle de base. Testez.... vous allez rire à quel point c'est dur mdrr.
 
 Prenez la méthode avec laquelle vous êtes le plus alaise (je vous conseille quand même la deux)
 
-**** Les raccourcis
+Mon clavier : l'Optimot. Aller sur le discord "bépo", puis dans le salon "optimot" message épinglé pour l'avoir.
 
-NE PAS GARDER LES RACCOURCIS DE BASE. 
+**** Les différents packages de raccourcis dispo
+
+*NE PAS GARDER LES RACCOURCIS DE BASE*
 
 Plusieurs options possibles :
 

@@ -9,18 +9,18 @@
 
 Pour lancer des commandes : M-x taperlenomdelacommande
 
-Je vais le package Keycast pour voir les commandes à l'écran (mais pas faire attention aux touches, mais plutôt aux =commandes= !)
+Je vais utiliser un package pour voir les commandes à l'écran (mais pas faire attention aux touches, mais plutôt aux =commandes= !)
 
 
 **** Orginasation
 
 2 dossiers .emacs.d : 
 1. un basique que vous copierez, ce sera votre base
-2. un second, ou je mettrai la configuration au fur et à mesure
+2. un second, ou je mettrai la configuration au fur et à mesure de toutes les vidéos
 
 **** Le programme
 
-Voir le dossier Vidéo
+Voir le dossier Notes
 Ne pas hésiter à directement aller voir les fonctionnalités après avoir vu la
 base (après la 4).
 
@@ -31,6 +31,7 @@ Vous donnez les pistes pour aller plus vite, mais je pourrais jamais vous rempla
 **** Installation
 
 *Si vous aviez une sauvegarde, renommer votre .emacs.d en .emacs.dsave pour ne pas tout perdre. Si vous ne comprenez pas cette phrase, passez à la suite*
+*Si vous aviez une autre version, désinstaller et installer après !*
 
 Pourquoi cette version ?
 Stable, et le 28.0 est en bêta, donc pas stable logiquement et ya des bugs.
@@ -38,13 +39,13 @@ Edit : sortie de emacs 28.1
 Après : emacs 28.1 stable
 
 #+begin_src emacs-lisp
-sudo snap install emacs-28 ;; faire des tab pour être sur de la commande
+sudo snap install emacs ;; faire des tab pour être sur de la commande
 #+end_src
 
 
 Ce qui compte : être sûr d'être 27.X ou +.
 
-Avant (ne pas suivre ça) : 
+Méthode avant (ne pas suivre ça) : 
 #+begin_src sh
   sudo add-apt-repository ppa:kelleyk/emacs
   sudo apt-get update

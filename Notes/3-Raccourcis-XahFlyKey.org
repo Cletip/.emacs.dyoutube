@@ -1,0 +1,133 @@
+
+*** Raccourcis : zoom sur xah-fly-keys
+
+À partir de là on commence à devenir efficace.
+SPC C-h pour voir toutes les commandes
+
+**** La base
+
+Pour mettre capslock en home :
+
+- créer un fichier Xmodmap, mettre ceci dedans : 
+  ! pour savoir le keycode d'une touche : "xev" dans un terminal
+  clear lock
+  keycode 66 = Home NoSymbol Home
+- (shell-command "xmodmap ~/lien/vers/le/fichier/Xmodmap") dans emacs, ou mettre
+  "xmodmap ~/lien/vers/le/fichier/Xmodmap" en application de démarrage
+
+Et c'est tout !
+
+Installation basique
+
+#+begin_src emacs-lisp
+  (use-package xah-fly-keys
+    :config
+    (xah-fly-keys-set-layout "azerty")
+    )
+#+end_src
+
+OU bien
+
+#+begin_src emacs-lisp
+  (use-package xah-fly-keys
+    :config
+    (xah-fly-keys-set-layout "azerty")
+
+    ;; ceci n'est pas obligatoire !
+    ;; je ne l'utilise plus, mais c'est une question de goût
+    ;; permet de mettru "d" (clavier azerty ) comme une touche enter
+    (defun cp-xfk-addon-command ()
+      "Modify keys for xah fly key command mode keys To be added to `xah-fly-command-mode-activate-hook'"
+      (interactive)
+      (define-key xah-fly-key-map (kbd "d") (kbd "RET"));;newline comme enter
+      )
+
+    (add-hook 'xah-fly-command-mode-activate-hook 'cp-xfk-addon-command)
+
+    )
+#+end_src
+
+[[http://xahlee.info/emacs/misc/xah-fly-keys_tutorial.html][Voir ici pour le tutorial]], le faire, et pratiquer !
+Système en "chouche", bien assimilé la première
+
+
+**** Xah-fly-keys personnalisation
+
+Mon fork :
+
+#+begin_src emacs-lisp
+  (use-package xah-fly-keys
+    :straight (xah-fly-keys :type git :host github :repo "Cletip/xah-fly-keys"
+                            :fork (:host github
+                                         :repo "Cletip/xah-fly-keys"))
+    :config     ;; reste de la config ici
+
+    ;; To disable both Control and Meta shortcut keys, add the following lines to you init.el before (require 'xah-fly-keys):
+    (setq xah-fly-use-control-key nil)
+    (setq xah-fly-use-meta-key nil)
+
+    ;; permet de mettru "u" comme enter, à changer
+    (defun cp-xfk-addon-command ()
+      "Modify keys for xah fly key command mode keys To be added to `xah-fly-command-mode-activate-hook'"
+      (interactive)
+      ;; (define-key xah-fly-key-map (kbd "u") (kbd "RET"));;pareilnewlinecomme enter
+      )
+
+    (add-hook 'xah-fly-command-mode-activate-hook 'cp-xfk-addon-command)
+    ;; (add-hook 'dired-mode-hook 'cp-xfk-addon-command)
+
+    ;; choisir son clavier, important
+    (xah-fly-keys-set-layout "beopy")
+    ;;(xah-fly-keys-set-layout "qwerty")
+    ;; (global-set-key (kbd "<menu>") 'xah-fly-command-mode-activate)
+
+    ;; Les hook	     
+    ;; sauvegarde automatique avec command mode
+    (add-hook 'xah-fly-command-mode-activate-hook 'xah-fly-save-buffer-if-file)
+
+    ;;qd on active une fonction, active le mode insert
+    (defvar cp/xfk-auto-insert-mode-fns '()
+      "List of functions to automatically call xah-fly-insert-mode-activate on.")
+    (setq cp/xfk-auto-insert-mode-fns
+          '(org-meta-return
+            org-insert-heading-respect-content
+            org-insert-link
+            recentf-open-files
+            ;; org-capture ;; désactivé car fait bugguer !
+
+            ;; More function names here
+            ))
+    (defun cp/xfk-auto-insert-mode-activate ()
+      "Wires xah-fly-insert-mode-activate to all functions from cp/xfk-auto-insert-mode-fns."
+      (dolist (element cp/xfk-auto-insert-mode-fns)
+        (advice-add element :after #'xah-fly-insert-mode-activate)))
+    (cp/xfk-auto-insert-mode-activate)
+
+    ;;qd on active une fonction, active le mode command
+    (defvar cp/xfk-auto-command-mode-fns '()
+      "List of functions to automatically call xah-fly-command-mode-activate on.")
+    (setq cp/xfk-auto-command-mode-fns
+          '(dashboard-jump-to-recents
+            dashboard-jump-to-projects
+            recentf-cancel-dialog
+            dashboard-jump-to-bookmarks
+            org-agenda-show-dashboard
+            dashboard-jump-to-if-dashboardweekagenda-agenda-for-the-coming-week-agenda-for-today
+            ;; More function names
+            ))
+
+    (defun cp/xfk-auto-command-mode-activate ()
+      "Wires xah-fly-command-mode-activate to all functions from cp/xfk-auto-command-mode-fns."
+      (dolist (element cp/xfk-auto-command-mode-fns)
+        (advice-add element :after #'xah-fly-command-mode-activate)))
+    (cp/xfk-auto-command-mode-activate)
+
+    )
+#+end_src
+
+Des remaps : (define-key xah-fly-key-map [remap recentf-open-files] #'consult-recent-file)
+quelques changements noté par "cp"
+ajout d'une troisième couche sur SPC SPC pour avoir pleins de commandes utiles
+ajout d'une couche pour les modes (pas encore fini)
+
+Mon but : tout mettre dans des variables, qui seront modifiables. 
