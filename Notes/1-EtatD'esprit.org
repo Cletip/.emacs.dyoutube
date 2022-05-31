@@ -1,6 +1,11 @@
 
 
+
+Je vais utiliser un package pour voir les commandes à l'écran (mais pas faire attention aux touches, mais plutôt aux =commandes= !)
+
 *** État d'esprit :
+
+
 
 Explication rapide emacs :
 - éditeur de texte et +

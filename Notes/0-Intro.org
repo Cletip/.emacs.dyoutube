@@ -7,10 +7,6 @@
 - C-x = control-x etc
 - M-y = meta-y etc
 
-Pour lancer des commandes : M-x taperlenomdelacommande
-
-Je vais utiliser un package pour voir les commandes à l'écran (mais pas faire attention aux touches, mais plutôt aux =commandes= !)
-
 **** Installation
 
 *Si vous aviez une sauvegarde, renommer votre .emacs.d en .emacs.dsave pour ne pas tout perdre. Si vous ne comprenez pas cette phrase, passez à la suite*
@@ -40,4 +36,6 @@ Méthode avant (ne pas suivre ça) :
 #+end_src
 
 
+
+Pour lancer des commandes : M-x taperlenomdelacommande
 
