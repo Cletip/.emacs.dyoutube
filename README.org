@@ -24,6 +24,22 @@ Je suis sous un linux, Ubuntu 20.04.3 LTS. (faire "lsb_release -a" pour voir la 
 1. Avoir les bases de linux : cd, ls, savoir insta
 2. Avoir git et savoir les commandes de base et (pas sûr que se soit nécessaire) un compte github pour télécharger des packages.
 
+*** Orginasation
+
+2 dossiers .emacs.d : 
+1. un basique que vous copierez, ce sera votre base
+2. un second, ou je mettrai la configuration au fur et à mesure de toutes les vidéos
+
+*** Le programme
+
+Voir le dossier Notes
+Ne pas hésiter à directement aller voir les fonctionnalités après avoir vu la
+base (après la 4).
+
+*** But
+
+Vous donnez les pistes pour aller plus vite, mais je pourrais jamais vous remplacer ;).
+
 *** Motivation :
 
 Pourquoi ceci ? Tout simplement pour deux raisons :

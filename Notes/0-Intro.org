@@ -11,23 +11,6 @@ Pour lancer des commandes : M-x taperlenomdelacommande
 
 Je vais utiliser un package pour voir les commandes à l'écran (mais pas faire attention aux touches, mais plutôt aux =commandes= !)
 
-
-**** Orginasation
-
-2 dossiers .emacs.d : 
-1. un basique que vous copierez, ce sera votre base
-2. un second, ou je mettrai la configuration au fur et à mesure de toutes les vidéos
-
-**** Le programme
-
-Voir le dossier Notes
-Ne pas hésiter à directement aller voir les fonctionnalités après avoir vu la
-base (après la 4).
-
-**** But
-
-Vous donnez les pistes pour aller plus vite, mais je pourrais jamais vous remplacer ;).
-
 **** Installation
 
 *Si vous aviez une sauvegarde, renommer votre .emacs.d en .emacs.dsave pour ne pas tout perdre. Si vous ne comprenez pas cette phrase, passez à la suite*
