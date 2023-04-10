@@ -21,7 +21,7 @@ Je suis sous un linux, Ubuntu 20.04.3 LTS. (faire "lsb_release -a" pour voir la 
 
 *** Prérequis : 
 
-1. Avoir les bases de linux : cd, ls, savoir insta
+1. Avoir les bases de linux : cd, ls, savoir installer des packages
 2. Avoir git et savoir les commandes de base et (pas sûr que se soit nécessaire) un compte github pour télécharger des packages.
 
 *** Orginasation
@@ -66,14 +66,15 @@ Et Vim ? Tout ce qui est dans vim est possible dans emacs, donc go emacs !
 **** Les commandes utiles :
 1. describe-function
 2. describe-variable
-3. straight-visit-package-website
-4. dired-jump
-5. =xah-pop-local-mark-ring=
-6. xah-shrink-whitespaces
-7. xah-open-in-external-app
-8. xah-open-in-terminal
-9. xah-copy-file-path
-10. balance-windows
+3. describe-bindings
+4. straight-visit-package-website
+5. dired-jump
+6. =xah-pop-local-mark-ring=
+7. xah-shrink-whitespaces
+8. xah-open-in-external-app
+9. xah-open-in-terminal
+10. xah-copy-file-path
+11. balance-windows
 
 **** Faire des macro
 F3, les opérations, puis F4.

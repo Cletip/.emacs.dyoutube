@@ -1,6 +1,6 @@
 
 
-*** Programme, but, et installation d'emacs.
+*** Conventions et installation d'emacs.
 
 
 *Convention* : 
@@ -17,8 +17,8 @@ Stable, et le 28.0 est en bêta, donc pas stable logiquement et ya des bugs.
 Edit : sortie de emacs 28.1
 Après : emacs 28.1 stable
 
-#+begin_src emacs-lisp
-sudo snap install emacs ;; faire des tab pour être sur de la commande
+#+begin_src shell
+  sudo snap install emacs ;; faire des tab pour être sur de la commande
 #+end_src
 
 

@@ -51,8 +51,11 @@ pas hésiter à renommer en .emacs.dsave.
 
 **** 1.b Les modes (major et minor), les hooks, la base des fonctions lisp.
 
-- Major mode = mode principale d'emacs, chargé une fois.
-- Minor mode = mode qui s'additionne au major-mode, il peut bien-sûr y en avoir plusieurs
+- Major mode = mode principale d'emacs, chargé une fois. =comment emacs va comprendre le fichier=
+
+- Minor mode = mode qui s'additionne au major-mode, il peut bien-sûr y en avoir plusieurs. =comment vous allez agir sur/comprendre le fichier=
+
+Les deux types de modes ne changent rien aux fichiers.
 
 #+begin_src emacs-lisp
 

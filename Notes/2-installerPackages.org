@@ -1,4 +1,5 @@
 
+
 *** L'intérieur d'emacs ! Comment installer des packages, base d'org mode
 
 
@@ -12,7 +13,7 @@
 Après téléchargement et renomage du .emacs.dBase
 
 1. init.el
-   Straight + Lance les options
+   Straight + Lance les options + la fonction pour tangle qui est pratique (=pas de caractère spécial !=)
 2. config.org, la suite
 3. config.el, pareil que le .org mais est chargé par emacs.
 4. earlyinit.el, charge une configuration tôt (avant la fenêtre même)
@@ -24,7 +25,9 @@ Copier le init.el et le config.org dans son emacs.d. Attendre 1 2 minutes... et 
 
 **** Comment installer des packages avec use-package
 
-Déclaration des package :
+Déclaration des packages :
+
+TODO utilisé custom. Expliqué que c'est load avant require, mais au final change rien, car le defvelopeur utilise defvar et defcustom, donc ne réécrit pas par dessus
 
 #+begin_src emacs-lisp
 
@@ -38,6 +41,9 @@ Déclaration des package :
       :if (condition)
 
       :after nomd'unautrepackage
+
+      :load-path "chemin/vers/le/package/si/cloner/en/local/"
+      ;;:load-path "~/.emacs.d/lisp/elfeed-dashboard/"
 
       :hook (org . tool-bar-mode) ;;quand org, alors active la tool-bar
       ;; :hook ((modeahook unautre encoreun) . lemodeaactiver) ;; autre syntax
@@ -90,3 +96,45 @@ Déclaration des package :
 **** Comment faire une bonne config ?
 
  Les if, when, tuto xah lisp. Utiliser la super fonction pour rapidement déboguer (attention de pas mettre de "")
+
+
+TODO
+
+Passer de ça :
+
+(require 'foo-bar)
+(foo-bar-mode 1)
+(setq foo-bar-baz '(a b c))
+(add-hook 'text-mode-hook 'foo-bar-minor-mode)
+(define-key text-mode-map (kbd "M-a") #'foo-bar-do-generic)
+(global-set-key (kbd "M-a") #'foo-bar-make-something)
+and all related symbols are defined in the same library foo-bar.el (you can always tell by calling M-x describe-symbol)
+
+the first step is to put all the stuff (except require) into :config section of use-package form, like
+
+À ça :
+
+(use-package foo-bar ; no apostrophe here!
+  :ensure t ; only you if install it using package.el from ELPA/MELPA/etc, no need to for internal/local packages
+  :config ; do all the stuff after the package is loaded
+  (foo-bar-mode 1)
+  (setq foo-bar-baz '(a b c))
+  (add-hook 'text-mode-hook 'foo-bar-minor-mode)
+  (define-key text-mode-map (kbd "M-a") #'foo-bar-do-generic)
+  (global-set-key (kbd "M-a") #'foo-bar-make-something))
+
+You are already fine here, it's use-packaged! But we can go further
+À ça :
+
+(use-package foo-bar
+  :ensure t 
+  :config 
+  (foo-bar-mode 1)
+  :custom
+  (foo-bar-baz '(a b c))
+  :hook
+  (text-mode . foo-bar-minor-mode) ; no "-hook"!, no '
+  :bind
+  (("M-a" . foo-bar-make-something)
+   :map text-mode-map
+   ("M-a" . foo-bar-do-generic)))
